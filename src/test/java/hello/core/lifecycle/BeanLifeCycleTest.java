@@ -13,7 +13,7 @@ public class BeanLifeCycleTest {
     public void lifeCycleTest() {
         ConfigurableApplicationContext ac = new AnnotationConfigApplicationContext(LifeCycleConfig.class);
         NetworkClient client = ac.getBean(NetworkClient.class);
-        ac.close(); //ApplicationContext는 close 지원 안 한다.
+        ac.close(); //ApplicationContext는 close 지원 안 하므로 ConfigurableApplicationContext 사용
     }
 
     @Configuration
