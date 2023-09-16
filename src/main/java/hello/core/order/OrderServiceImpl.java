@@ -6,10 +6,12 @@ import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor //final 붙은 걸로 생성자 만들어준다.
 public class OrderServiceImpl implements OrderService {
 
     private final MemberRepository memberRepository; // final로 되어 있으면 기본으로 할당을 하든 생성자를 통해서 할당되어야 한다.
@@ -22,11 +24,13 @@ public class OrderServiceImpl implements OrderService {
     FixDiscountPolicy > RateDiscountPolicy 변경하는 것은 OCP 위반!
      */
 
+    /* 생성자
     @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
+    */
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
